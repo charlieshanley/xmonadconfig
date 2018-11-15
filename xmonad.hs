@@ -9,12 +9,13 @@ main :: IO ()
 main = do
     -- TODO interpolate nix derivation
     xmobarProc <- spawnPipe "xmobar /home/charlie/.xmonad/xmobarrc"
-    xmonad $ def
+    xmonad $ docks def
         { manageHook = manageDocks <+> manageHook def
         , layoutHook = avoidStruts  $  layoutHook def
         , logHook    = dynamicLogWithPP $ xmobarPP
             { ppOutput = hPutStrLn xmobarProc
-            , ppTitle  = xmobarColor "green" "" . shorten 50
+            -- , ppTitle  = xmobarColor "green" "" . shorten 50
+            , ppTitle = (>> "")
             }
         , modMask    = mod4Mask
         , terminal   = "urxvt"
