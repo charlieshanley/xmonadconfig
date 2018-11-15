@@ -21,11 +21,11 @@ Config { font = "xft:DejaVu Sans Mono:size=8"
            , Run Cpu ["-L","40","-H","80","--normal","orange","--high","red"] 10
            , Run Memory ["-t","Mem: <usedratio>%"] 10
            , Run Swap [] 10
-           , Run Date "%H:%M:%S %a %b %_d %Y" "date" 10
-           , Run Battery [ "-t", "<left>% <acstatus>", "-L", "10", "-l", "red" ] 600
+           , Run Date "%H:%M:%S | %A | %_d %B %Y" "date" 10
+           , Run Battery [ "-t", "<left>% <acstatus>", "-L", "20", "-l", "red", "--normal", "yellow", "-H", "80", "-h", "green" ] 600
            , Run StdinReader
            ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% | %cpu% | %memory% - %swap% | %eth0%}<fc=#ee9a00>%date%</fc>{  %KDCA% | %battery%"
+       , template = "%battery% | %cpu% | %memory% - %swap% | %eth0%}%StdinReader% { <fc=#ee9a00>%date%</fc> | %KDCA%"
        }
