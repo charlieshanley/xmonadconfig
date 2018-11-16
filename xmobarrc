@@ -16,16 +16,16 @@ Config { font = "xft:DejaVu Sans Mono:size=8"
        , allDesktops = True
        , overrideRedirect = False
        , commands = 
-           [ Run Weather "KDCA" ["-t","<tempF>F <skyCondition>", "-L","40","-H","80", "--high","red", "--low","skyblue"] 12000
+           [ Run Weather "KDCA" ["-t","<tempF>F <skyCondition>", "-L","40","-H","80", "--high","red", "--low","skyblue"] 36000
            , Run Network "eth0" ["-L","0","-H","32","--normal","green","--high","red"] 10
            , Run Cpu ["-L","40","-H","80","--normal","orange","--high","red"] 10
            , Run Memory ["-t","Mem: <usedratio>%"] 10
            , Run Swap [] 10
-           , Run Date "%H:%M:%S | %A | %_d %B %Y" "date" 10
+           , Run Date "%_d %B %Y | %A | %H:%M:%S " "date" 10
            , Run Battery [ "-t", "<left>% <acstatus>", "-L", "20", "-l", "red", "--normal", "yellow", "-H", "80", "-h", "green" ] 600
            , Run StdinReader
            ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%battery% | %cpu% | %memory% - %swap% | %eth0%}%StdinReader% { <fc=#ee9a00>%date%</fc> | %KDCA%"
+       , template = "%battery% | %cpu% | %memory% - %swap% | %eth0%}%StdinReader%{%KDCA% | <fc=#ee9a00>%date%</fc>"
        }

@@ -3,6 +3,7 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run (spawnPipe)
 import XMonad.Util.EZConfig (additionalKeys)
+import XMonad.Layout.NoBorders (smartBorders)
 import System.IO
 
 main :: IO ()
@@ -11,7 +12,7 @@ main = do
     xmobarProc <- spawnPipe "xmobar /home/charlie/.xmonad/xmobarrc"
     xmonad $ docks def
         { manageHook = manageDocks <+> manageHook def
-        , layoutHook = avoidStruts  $  layoutHook def
+        , layoutHook = smartBorders . avoidStruts  $  layoutHook def
         , logHook    = dynamicLogWithPP $ xmobarPP
             { ppOutput = hPutStrLn xmobarProc
             -- , ppTitle  = xmobarColor "green" "" . shorten 50
