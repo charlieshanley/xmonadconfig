@@ -10,6 +10,7 @@ main :: IO ()
 main = do
     -- TODO interpolate nix derivation
     xmobarProc <- spawnPipe "xmobar /home/charlie/.xmonad/xmobarrc"
+    spawn "feh --bg-center /home/charlie/Downloads/footerBG.jpg"
     xmonad $ docks def
         { manageHook = manageDocks <+> manageHook def
         , layoutHook = smartBorders . avoidStruts  $  layoutHook def
