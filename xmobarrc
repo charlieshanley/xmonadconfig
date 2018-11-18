@@ -4,14 +4,10 @@ Config { font = "xft:DejaVu Sans Mono:size=8"
        , border = TopB
        , bgColor = "black"
        , fgColor = "grey"
-       , alpha = 255
+       , alpha = 220
        , position = Top
-       , textOffset = -1
-       , iconOffset = -1
-       , lowerOnStart = False
        , pickBroadest = False
        , persistent = True
-       , hideOnStart = False
        , iconRoot = "."
        , allDesktops = True
        , overrideRedirect = False
@@ -21,11 +17,12 @@ Config { font = "xft:DejaVu Sans Mono:size=8"
            , Run Cpu ["-L","40","-H","80","--normal","orange","--high","red"] 10
            , Run Memory ["-t","Mem: <usedratio>%"] 10
            , Run Swap [] 10
-           , Run Date "%_d %B %Y | %A | %H:%M:%S " "date" 10
+           , Run Date "%_d %B %Y | %A" "date" 6000
+           , Run Date "%H:%M:%S"       "time" 10
            , Run Battery [ "-t", "<left>% <acstatus>", "-L", "20", "-l", "red", "--normal", "yellow", "-H", "80", "-h", "green" ] 600
            , Run StdinReader
            ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%battery% | %cpu% | %memory% - %swap% | %eth0%}%StdinReader%{%KDCA% | <fc=#ee9a00>%date%</fc>"
+       , template = "%battery% | %cpu% | %memory% - %swap% | %eth0%}%StdinReader%{%KDCA% | %date% | <fc=white>%time%</fc>"
        }
