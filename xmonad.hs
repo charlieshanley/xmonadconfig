@@ -27,10 +27,11 @@ main = do
         , focusedBorderColor = "#cd8b00"
         } `additionalKeys`
         -- TODO interpolate nix derivation
-        [ ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
-        , ((0, xK_Print), spawn "scrot")
-        , ((0, xF86XK_AudioLowerVolume), lowerVolume 5 >>= showVolume)
-        , ((0, xF86XK_AudioRaiseVolume), raiseVolume 5 >>= showVolume)
+        [ ((mod4Mask .|. shiftMask, xK_f), spawn "firefox")
+        , ((controlMask, xK_Print),        spawn "sleep 0.2; scrot -s")
+        , ((0, xK_Print),                  spawn "scrot")
+        , ((0, xF86XK_AudioLowerVolume),   lowerVolume 5 >>= showVolume)
+        , ((0, xF86XK_AudioRaiseVolume),   raiseVolume 5 >>= showVolume)
         ]
 
 mySpace = spacingRaw True (Border 0 0 0 0) False (Border 5 5 5 5) True
